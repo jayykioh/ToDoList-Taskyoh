@@ -1,0 +1,23 @@
+# dependencies
+/node_modules
+/be/node_modules
+/fe/node_modules 
+
+# build outputs
+/dist
+/build
+
+# logs
+*.log
+
+# environment variables
+.env
+.env.local
+
+# package lockfiles
+/package-lock.json
+/be/package-lock.json
+
+# OS / tooling
+npm-debug.log*
+.DS_Store
