@@ -2,9 +2,9 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div className='bg-linear-to-r from-teal-500 to-blue-500 text-white p-6 rounded-xl shadow-lg'>
-      <h1 className='text-3xl font-bold text-center'>Task Manager</h1>
-      <p className='text-center mt-2 text-teal-50'>Quản lý công việc của bạn</p>
+    <div className='space-y-2 text-center'>
+      <h1 className='text-4xl font-bold text-center text-transparent bg-primary bg-clip-text'>Taskyoh - Task Manager</h1>
+        <p className='text-muted-foreground'>Làm đi nha hehe</p>
     </div>
   )
 }

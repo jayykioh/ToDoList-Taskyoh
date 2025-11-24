@@ -1,0 +1,22 @@
+{
+  "name": "todopj",
+  "version": "1.0.0",
+  "description": "ok readme",
+  "main": "index.js",
+  "scripts": {
+    "build" : "npm install --prefix be && npm install --prefix fe && npm run build --prefix fe",
+      "start" : "npm run start --prefix be"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayykioh/ToDoList-Taskyoh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jayykioh/ToDoList-Taskyoh/issues"
+  },
+  "homepage": "https://github.com/jayykioh/ToDoList-Taskyoh#readme"
+}
