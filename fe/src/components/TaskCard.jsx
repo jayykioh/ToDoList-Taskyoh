@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Card } from './ui/card'
 import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
@@ -126,16 +126,16 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
 
             {/* ngày tháng */}
             <div className='flex items-center gap-2 mt-1.5'>
-              <Calendar className='size-3.5 text-muted-foreground/70' />
-              <span className='text-xs text-muted-foreground/70'>
+              <Calendar className='size-3.5 text-muted-foreground/70 dark:text-white/90' />
+              <span className='text-xs text-muted-foreground/70 dark:text-white/90'>
                 {new Date(task.createdAt).toLocaleString()}
               </span>
 
               {task.completedAt && (
                 <>
-                  <span className='text-xs text-muted-foreground/70'>•</span>
-                  <CheckCircle2 className='size-3.5 text-primary/70' />
-                  <span className='text-xs text-muted-foreground/70'>
+                  <span className='text-xs text-muted-foreground/70 dark:text-white/90'>•</span>
+                  <CheckCircle2 className='size-3.5 text-primary/70 dark:text-primary' />
+                  <span className='text-xs text-muted-foreground/70 dark:text-white/90'>
                     {new Date(task.completedAt).toLocaleString()}
                   </span>
                 </>

@@ -4,6 +4,7 @@ import { Button } from './ui/button'
 import { Badge } from './ui/badge'
 import { motion } from 'framer-motion'
 
+
 const StatsAndFilter = ({
   completedTasksCount = 0,
   activeTasksCount = 0,
@@ -11,9 +12,9 @@ const StatsAndFilter = ({
   setFilter  
 }) => {
   return (
-    <div className='flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center'>
+    <div className='flex flex-col items-start justify-between gap-1 sm:flex-row sm:items-center'>
       {/* thống kê */}
-      <div className='flex gap-3'>
+      <div className='flex gap-2'>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Badge
             variant='secondary'
@@ -32,7 +33,7 @@ const StatsAndFilter = ({
         </motion.div>
       </div>
       {/* filter */}
-      <div className='flex flex-col gap-2 sm:flex-row bg-white/20 dark:bg-black/20 p-1 rounded-lg backdrop-blur-md border border-white/10'>
+      <div className='flex flex-col sm:flex-row bg-white/20 dark:bg-black/20 p-1 rounded-lg backdrop-blur-md border border-white/10'>
         {Object.keys(FilterType).map(type => (
           <Button
             key={type}

@@ -10,7 +10,7 @@ import { toast } from 'sonner'
 import api from '../lib/axios'
 import { visibleTaskLimit } from '@/lib/data.js'
 import { motion } from 'framer-motion'
-import Background3D from '@/components/Background3D'
+import CozyBackground from '@/components/CozyBackground'
 
 export default function HomePage () {
   const [taskBuffer, setTaskBuffer] = useState([]);
@@ -78,42 +78,59 @@ export default function HomePage () {
     }
   }, [visibleTasks.length, page]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
   return (
-    <div className='min-h-screen w-full bg-white relative overflow-hidden'>
-      {/* <div
-        className='absolute inset-0 z-0'
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #f0f0f0 1px, transparent 1px),
-            linear-gradient(to bottom, #f0f0f0 1px, transparent 1px),
-            radial-gradient(circle 600px at 0% 200px, rgba(168, 240, 198, 0.5), transparent),
-            radial-gradient(circle 600px at 100% 200px, rgba(168, 240, 198, 0.5), transparent)
-          `,
-          backgroundSize: '20px 20px, 20px 20px, 100% 100%, 100% 100%'
-        }}
-      /> */}
-      <Background3D/>
+    <div className='min-h-screen w-full relative overflow-hidden bg-white dark:bg-black transition-colors duration-500'>
+      <CozyBackground />
 
       <div className='container pt-8 mx-auto relative z-10'>
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className='w-full max-w-2xl p-6 mx-auto space-y-8'
         >
-          <Header />
-          <AddTask handleNewTaskAdded={handleTaskChanged} />
+          <motion.div variants={itemVariants}>
+            <Header />
+          </motion.div>
+          
+          <motion.div variants={itemVariants}>
+            <AddTask handleNewTaskAdded={handleTaskChanged} />
+          </motion.div>
 
-          <StatsAndFilter
-            filter={filter}
-            setFilter={setFilter}
-            activeTasksCount={activeTaskCount}
-            completedTasksCount={completeTaskCount}
-          />
+          <motion.div variants={itemVariants}>
+            <StatsAndFilter
+              filter={filter}
+              setFilter={setFilter}
+              activeTasksCount={activeTaskCount}
+              completedTasksCount={completeTaskCount}
+            />
+          </motion.div>
 
-          <TaskLists filteredTasks={visibleTasks} filter={filter} handleTaskChanged={handleTaskChanged} />
+          <motion.div variants={itemVariants}>
+            <TaskLists filteredTasks={visibleTasks} filter={filter} handleTaskChanged={handleTaskChanged} />
+          </motion.div>
 
-          <div className='flex flex-col items-center justify-between gap-6 sm:flex-row'>
+          <motion.div variants={itemVariants} className='flex flex-col items-center justify-between gap-6 sm:flex-row'>
             <TaskListPagination
               handleNext={handleNext}
               handlePrev={handlePrev}
@@ -122,12 +139,14 @@ export default function HomePage () {
               totalPages={totalPages}
             />
             <DateTimeFilter dateQuery={dateQuery} setDateQuery={setDateQuery} />
-          </div>
+          </motion.div>
 
-          <Footer
-            activeTaskCount={activeTaskCount}
-            completedTaskCount={completeTaskCount}
-          />
+          <motion.div variants={itemVariants}>
+            <Footer
+              activeTaskCount={activeTaskCount}
+              completedTaskCount={completeTaskCount}
+            />
+          </motion.div>
         </motion.div>
       </div>
     </div>
