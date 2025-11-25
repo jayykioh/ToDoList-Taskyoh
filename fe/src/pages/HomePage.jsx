@@ -9,6 +9,8 @@ import { useEffect, useState, useCallback } from 'react'
 import { toast } from 'sonner'
 import api from '../lib/axios'
 import { visibleTaskLimit } from '@/lib/data.js'
+import { motion } from 'framer-motion'
+import Background3D from '@/components/Background3D'
 
 export default function HomePage () {
   const [taskBuffer, setTaskBuffer] = useState([]);
@@ -78,7 +80,7 @@ export default function HomePage () {
 
   return (
     <div className='min-h-screen w-full bg-white relative overflow-hidden'>
-      <div
+      {/* <div
         className='absolute inset-0 z-0'
         style={{
           backgroundImage: `
@@ -89,10 +91,16 @@ export default function HomePage () {
           `,
           backgroundSize: '20px 20px, 20px 20px, 100% 100%, 100% 100%'
         }}
-      />
+      /> */}
+      <Background3D/>
 
       <div className='container pt-8 mx-auto relative z-10'>
-        <div className='w-full max-w-2xl p-6 mx-auto space-y-6'>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className='w-full max-w-2xl p-6 mx-auto space-y-8'
+        >
           <Header />
           <AddTask handleNewTaskAdded={handleTaskChanged} />
 
@@ -120,7 +128,7 @@ export default function HomePage () {
             activeTaskCount={activeTaskCount}
             completedTaskCount={completeTaskCount}
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   )

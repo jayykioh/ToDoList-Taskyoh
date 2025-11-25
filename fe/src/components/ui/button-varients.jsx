@@ -16,7 +16,7 @@ export const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
 gradient: `
-  bg-gradient-primary
+  bg-[image:var(--gradient-primary)]
   text-primary-foreground
   border-0
   transform

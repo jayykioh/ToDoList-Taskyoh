@@ -1,5 +1,6 @@
 import TaskEmptyState from './TaskEmptyState'
 import TaskCard from './TaskCard'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const TaskLists = ({filteredTasks, filter, handleTaskChanged}) => {
   if(!filteredTasks || filteredTasks.length == 0 ){
@@ -8,6 +9,7 @@ const TaskLists = ({filteredTasks, filter, handleTaskChanged}) => {
 
   return (
     <div className='space-y-3'>
+      <AnimatePresence mode='popLayout'>
         {filteredTasks.map((task,index)=>
             (
                 <TaskCard
@@ -18,6 +20,7 @@ const TaskLists = ({filteredTasks, filter, handleTaskChanged}) => {
                 />
             )
         )}
+      </AnimatePresence>
     </div>
   )
 }

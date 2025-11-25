@@ -22,9 +22,10 @@ app.use("/api/tasks", taskRoutes);
 if(process.env.NODE_ENV == 'production'){
     app.use(express.static(path.join(__dirname, "../fe/dist")));
 
-app.get("*",(req,res) => {
-    res.sendFile(path.join(__dirname,"../fe/dist/index.html"));
-})
+    // Catch-all handler for SPA - serves index.html for any route not matched above
+    app.use((req, res) => {
+        res.sendFile(path.join(__dirname, "../fe/dist/index.html"));
+    });
 }
 
 connectDB().then(()=>{
